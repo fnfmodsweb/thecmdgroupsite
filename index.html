@@ -18,7 +18,7 @@
 </head>
 <body>
   <main class="wrap">
-    <img id="cover" src="img.png" alt="" />
+    <img id="cover" src="https://i.ibb.co/nqJsdTVr/img.png" alt="" />
     <h1>FIND THE CODE</h1>
 
     <div class="controls" role="form" aria-label="code form">
@@ -31,7 +31,7 @@
 
 <script>
 (() => {
-  const EXPECTED_HEX = "434D444752305550"; // expected hex, normalized uppercase
+  const EXPECTED_HEX = "434D444752305550";
   const input = document.getElementById('codeInput');
   const btn = document.getElementById('enterBtn');
   const msg = document.getElementById('msg');
@@ -54,7 +54,6 @@
     }
     if(raw === EXPECTED_HEX){
       msg.textContent = 'Access granted — redirecting...';
-      // slight delay so user sees message
       setTimeout(()=> { window.location.href = redirectUrl; }, 600);
     } else {
       msg.textContent = 'Incorrect code.';
@@ -64,7 +63,6 @@
   btn.addEventListener('click', handleSubmit);
   input.addEventListener('keydown', e => { if(e.key === 'Enter') handleSubmit(); });
 
-  // hide broken image if no img.png
   const img = document.getElementById('cover');
   img.addEventListener('error', () => { img.style.display = 'none'; }, {once:true});
 })();
